@@ -28,15 +28,20 @@ When a vehicle occupies a slot:
 
 ```text
 Vehicle detected
-      ↓
+      |
+      v
 Sensor detects vehicle
-      ↓
+      |
+      v
 Controller updates slot status
-      ↓
+      |
+      v
 Slot marked OCCUPIED
-      ↓
+      |
+      v
 LED changes status
-      ↓
+      |
+      v
 Available slot count decreases
 ```
 
@@ -44,29 +49,39 @@ When the vehicle leaves:
 
 ```text
 Vehicle leaves
-      ↓
+      |
+      v
 Sensor detects empty slot
-      ↓
+      |
+      v
 Controller updates slot status
-      ↓
+      |
+      v
 Slot marked AVAILABLE
-      ↓
+      |
+      v
 LED changes status
-      ↓
+      |
+      v
 Available slot count increases
 ```
 
-The system can also determine whether new vehicles should be allowed to enter the parking area.
+The system also determines whether new vehicles should be allowed to enter the parking area.
 
 ```text
 Available slots > 0
-        ↓
+        |
+        v
    Entry allowed
+```
 
+```text
 Available slots = 0
-        ↓
+        |
+        v
    Parking FULL
-        ↓
+        |
+        v
    Entry restricted
 ```
 
@@ -92,36 +107,36 @@ The exact device configuration is contained within the Packet Tracer project fil
 ## System Architecture
 
 ```text
-                     ┌──────────────┐
-                     │  IoT Server  │
-                     └──────┬───────┘
-                            │
-                     ┌──────▼──────┐
-                     │ IoT Gateway │
-                     └──────┬──────┘
-                            │
-                   ┌────────▼────────┐
-                   │   Controller    │
-                   └────────┬────────┘
-                            │
-          ┌─────────────────┼─────────────────┐
-          │                 │                 │
-      ┌───▼───┐         ┌───▼───┐         ┌───▼───┐
-      │Sensor │         │Sensor │         │Sensor │
-      │Slot 1 │         │Slot 2 │         │Slot 3 │
-      └───┬───┘         └───┬───┘         └───┬───┘
-          │                 │                 │
-        ┌─▼─┐             ┌─▼─┐             ┌─▼─┐
-        │LED│             │LED│             │LED│
-        └───┘             └───┘             └───┘
-                            │
-                      ┌─────▼─────┐
-                      │  Display  │
-                      └─────┬─────┘
-                            │
-                      ┌─────▼─────┐
-                      │ Entry Gate│
-                      └───────────┘
+                     +--------------+
+                     |  IoT Server  |
+                     +------+-------+
+                            |
+                     +------v-------+
+                     | IoT Gateway  |
+                     +------+-------+
+                            |
+                   +--------v---------+
+                   |    Controller    |
+                   +--------+---------+
+                            |
+          +-----------------+-----------------+
+          |                 |                 |
+      +---v---+         +---v---+         +---v---+
+      |Sensor |         |Sensor |         |Sensor |
+      |Slot 1 |         |Slot 2 |         |Slot 3 |
+      +---+---+         +---+---+         +---+---+
+          |                 |                 |
+        +-v-+             +-v-+             +-v-+
+        |LED|             |LED|             |LED|
+        +---+             +---+             +---+
+                            |
+                      +-----v-----+
+                      |  Display  |
+                      +-----+-----+
+                            |
+                      +-----v-----+
+                      | Entry Gate|
+                      +-----------+
 ```
 
 ---
@@ -154,15 +169,17 @@ Open the `.pkt` file using **Cisco Packet Tracer** to view, configure, and run t
 
 ## Team Members and Division of Work
 
-### 1. Vaishnav Sunil Nair
+### Vaishnav Sunil Nair
+
 **Role:** Network and System Integration
 
 - Design the overall Packet Tracer topology
 - Configure routers, switches, and network connectivity
-- Configure IoT gateway/network communication
+- Configure IoT gateway and network communication
 - Integrate the individual system components
 
-### 2. Kiran S Nair
+### Kiran S Nair
+
 **Role:** Parking Slot Detection
 
 - Configure parking-slot sensors
@@ -170,7 +187,8 @@ Open the `.pkt` file using **Cisco Packet Tracer** to view, configure, and run t
 - Configure individual slot occupancy states
 - Test sensor behaviour for occupied and available slots
 
-### 3. Shreyas Nair
+### Shreyas Nair
+
 **Role:** Control and Actuation
 
 - Configure LEDs for slot status
@@ -178,13 +196,15 @@ Open the `.pkt` file using **Cisco Packet Tracer** to view, configure, and run t
 - Implement entry-gate control
 - Configure actuator behaviour based on parking availability
 
-### 4. Adithyadev B
+### Adithyadev B
+
 **Role:** IoT Server and Testing
 
 - Configure the IoT server
 - Connect and monitor IoT devices
 - Test communication between system components
-- Perform complete system testing and identify integration issues
+- Perform complete system testing
+- Identify and resolve integration issues
 
 ### Shared Responsibilities
 
@@ -202,16 +222,18 @@ All team members will participate in:
 
 ```text
 smart-parking-system/
-│
-├── README.md
-├── .gitignore
-│
-├── packet-tracer/
-│   └── smart_parking.pkt
-│
-└── assets/
-    ├── topology/
-    └── screenshots/
+|
++-- README.md
++-- .gitignore
+|
++-- packet-tracer/
+|   +-- smart_parking.pkt
+|
++-- assets/
+    |
+    +-- topology/
+    |
+    +-- screenshots/
 ```
 
 ### packet-tracer/
