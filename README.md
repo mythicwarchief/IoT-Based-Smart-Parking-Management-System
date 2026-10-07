@@ -1,5 +1,4 @@
-```markdown
-# IoT-Based Smart Parking Management System
+## IoT-Based Smart Parking Management System
 
 An IoT-based smart parking management system implemented and simulated using **Cisco Packet Tracer**.
 
@@ -275,4 +274,3 @@ Contains screenshots demonstrating the working system.
 - [ ] Integrate complete system
 - [ ] Test complete simulation
 - [ ] Finalize Packet Tracer project
-```
